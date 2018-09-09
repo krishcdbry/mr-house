@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>MR House</title>
+
+  <style>
+  body {
+    background: snow;
+  font-family: "rooney-sans", Avenir-Book, Calibri, sans-serif; 
+  margin:0;
+  padding:0;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.house {
+    position: fixed;
+    width: 1238px;
+    top: 44%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.house img {
+   width: 100%;
+}
+
+.door {
+    height: 175px;
+    width: 99px;
+    position: fixed;
+    background: #999;
+    margin-left: 12px;
+    margin-top: 5px;
+    z-index: 5;
+    bottom: 300px;
+    top: 298px;
+    left: 45%;
+}
+
+.door0 {
+  background: url('https://pre00.deviantart.net/de58/th/pre/f/2013/258/6/c/background_home_bloom_by_miniwinx-d6mgjjo.png');
+  background-size: cover;
+  background-position: 50%;
+
+}
+
+.door1 {
+  background: #999;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  transform-origin: left;
+  transition: transform 1s ease-out;
+}
+
+.name-plate {
+  color: #fff;
+  text-align:center;
+  margin-top: 10px;
+  font-weight: bold;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  font-size: 11px;
+}
+
+.door1.open {
+  perspective : 1000px;
+  transform: perspective(1200px) rotateY(-105deg);
+  z-index:5;
+  transform-origin: left;
+  animation: doorOpen 1s ease-out;
+}
+
+.door1 .shade {
+  background: #ddd;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right:0px;
+  z-index: 5px;
+  opacity: 0;
+}
+
+.open .shade {
+   opacity: 1;
+}
+
+.door1 > #open {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background: #999;
+  display: block;
+  top: 50%;
+  right: 10%;
+  transform: translate3d(0%, -50%, 0);
+  z-index: 999;
+  border-radius: 50%;
+}
+
+#open::before {
+  content: '....';
+  background: transparent;
+  border: 1.2px solid #999;
+  border-radius:50%;
+  position: absolute;
+  background: rgba(0,0,0,0.1);
+  height: 20px;
+  width: 20px;
+  top: -6px;
+  left: -6px;
+  z-index: 10;
+  display: block;
+  color: transparent;
+}
+
+.road {
+  width: 100vw;
+  background: #ccc;
+  height: 300px;
+  position: absolute;
+  bottom:0;
+  z-index: 1;
+}
+
+
+@keyframes doorOpen {
+  
+  from {
+     transform: rotateY(0deg);
+  }
+ 
+  
+  to {
+    transform : perspective(1200px) rotateY(-105deg);
+  }
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+  
+  
+  <div class="content">
+    <div class="house">
+      <img src="https://i.ytimg.com/vi/BxHVDabG1UM/maxresdefault.jpg">
+      <div class="door door0"></div>
+      <div class="door door1" id="door">
+        <div class="name-plate">MR. House</div>
+        <div class="shade"></div>
+        <span id="open"></span>
+      </div>
+    </div>
+  
+  </div>
+  
+
+
+  <script>
+      
+
+
+window.addEventListener('load', () => {
+  console.log("loadd");
+  let open = document.getElementById('open');
+  let door = document.getElementById('door');
+   
+  open.addEventListener('click', () => {
+     door.classList.toggle('open');
+   })
+})
+
+  </script>
+  
+
+</body>
+</html>
